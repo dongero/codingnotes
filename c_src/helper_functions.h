@@ -1,0 +1,2 @@
+
+int squared(int *basenumber);
