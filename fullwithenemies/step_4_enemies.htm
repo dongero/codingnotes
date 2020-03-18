@@ -162,12 +162,14 @@ var mapItems = [
 
 var enemyTypes = [
 	{ img : "guard.png", moveSpeed : 0.02, rotSpeed : 2, totalStates : 5 },
-	{ img : "guard2.png", moveSpeed : 0.02, rotSpeed : 100, totalStates : 6}
+	{ img : "guard2.png", moveSpeed : 0.02, rotSpeed : 100, totalStates : 6},
+	{ img : "ghost4.png", moveSpeed : 0.02, rotSpeed : 100, totalStates : 14}
 ];
 
 var mapEnemies = [
-	{type : 1, x : 17.5, y : 4.5},
-	{type : 0, x : 25.5, y : 16.5}
+	{type : 0, x : 17.5, y : 4.5},
+	{type : 0, x : 25.5, y : 16.5},
+	{type : 2, x : 10, y : 16.5}
 ];
 
 var player = {
@@ -345,14 +347,14 @@ function ai(timeDelta) {
 
 		var dx = player.x - enemy.x;
 		var dy = player.y - enemy.y;
-
+//change grewater than and less than to make them chase yah if you come close
 		var dist = Math.sqrt(dx*dx + dy*dy);
-		if (dist > 4) {
+		if (dist < 8) {
 			var angle = Math.atan2(dy, dx);
 
 			enemy.rotDeg = angle * 180 / Math.PI;
 			enemy.rot = angle;
-			enemy.speed = 1;
+			enemy.speed = 3;
 
 			var walkCycleTime = 1000;
 			var numWalkSprites = 4;
